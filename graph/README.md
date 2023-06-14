@@ -1,8 +1,46 @@
 ## graph
-### adjacency matrix
-### adjacency list
-### direction vector
+
+**목차**
+- [graph](#graph)
+  - [adjacency matrix(인접 행렬)](#adjacency-matrix인접-행렬)
+  - [adjacency list(인접 리스트)](#adjacency-list인접-리스트)
+  - [4방향 탐색과 direction vector](#4방향-탐색과-direction-vector)
+  - [dfs(depth first search)](#dfsdepth-first-search)
+  - [bfs(breadth first search)](#bfsbreadth-first-search)
+  - [tree travesal](#tree-travesal)
+  - [dijkstra(최단 경로 탐색 알고리즘)](#dijkstra최단-경로-탐색-알고리즘)
+
+### adjacency matrix(인접 행렬)
+인접 행렬이란 그래프에서 정점과 간선의 관계를 나타내는 bool 타입의 정사각형 행렬을 의미하며 정사각형 행렬의 각 요소는 0 또는 1이라는 값을 갖습니다. 0은 두 정점 사이의 경로가 없음을 의미하며 1은 두 정점 사이의 경로가 있음을 의미합니다.
+
+<br>
+
+*reference*
+- https://blog.naver.com/jhc9639/222289089015
+
+<br>
+
+### adjacency list(인접 리스트)
+인접 리스트는 그래프에서 정점과 간선의 관계를 나타내는 연결리스트를 의미하며, list가 아닌 vector로 구현해도 무방합니다. 정점 별로 벡터를 생성하여 해당 정점에 인접한 정점들을 벡터의 요소로 추가합니다.
+
+*reference*
+- https://blog.naver.com/jhc9639/222289089015
+
+<br>
+
+### 4방향 탐색과 direction vector
+```cpp
+const int dy[] = {-1, 0, 1, 0};
+const int dx[] = {0, 1, 0, -1};
+for(int i = 0; i < 4; i++){
+    ny = y + dy[i];
+    nx = x + dx[i];
+}
+```
+
 ### dfs(depth first search)
+DFS는 그래프를 탐색할 때 쓰는 알고리즘이며 어떤 노드부터 시작해 인접한 노드들을 재귀적으로 방문하며 방문한 정점은 다시 방문하지 않으며 각 분기마다 가능한 가장 멀리 있는 노드까지 탐색하는 알고리즘입니다.
+
 그래프에서 깊이 우선 탐색은 트리의 깊이 우선 탐색과 유사합니다. 트리와의 차이점은 그래프는 (특정 노드를 2번 방문할 수도 있는)순환을 포함할 수 있다는 점입니다. 동일한 노드를 한번 더 처리하는 것을 피하기 위해서 방문 여부를 bool값 형태로 저장하는 배열을 사용합니다.
 > Depth First Traversal (or Search) for a graph is similar to Depth First Traversal of a tree. The only catch here is, unlike trees, graphs may contain cycles (a node may be visited twice). To avoid processing a node more than once, use a boolean visited array.
 
@@ -23,12 +61,15 @@ Output: DFS from vertex 2 : 2 0 1 3
 
 <br>
 
-***reference***
+*reference*
 - https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
+- https://blog.naver.com/jhc9639/222289089015
 
 <br>
 
 ### bfs(breadth first search)
+BFS는 그래프를 탐색하는 알고리즘이며 어떤 정점에서 시작해 다음 깊이의 정점으로 이동하기전 현재 깊이의 모든 정점을 탐색하며 방문한 정점은 다시 방문하지 않는 알고리즘입니다. 같은 가중치를 가진 그래프에서 최단거리알고리즘으로 쓰입니다.
+
 그래프에서 너비 우선 탐색은 트리의 너비 우선 탐색과 유사합니다. 트리와의 차이점은 그래프는 순환을 포함할 수 있다는 점입니다. 그래서 우리는 동일한 노드로 다시 돌아 올 수도 있습니다. 동일한 노드를 한번 더 처리하는 것을 피하기 위해서 방문 여부를 bool값 형태로 저장하는 배열을 사용합니다. 문제를 단순화하기 위해 모든 vertex들은 시작 지점으로부터 도달 가능하다고 가정하겠습니다.
 > Breadth-First Traversal (or Search) for a graph is similar to Breadth-First Traversal of a tree. The only catch here is, unlike trees, graphs may contain cycles, so we may come to the same node again. To avoid processing a node more than once, we use a boolean visited array. For simplicity, it is assumed that all vertices are reachable from the starting vertex.
 
@@ -39,8 +80,9 @@ Output: DFS from vertex 2 : 2 0 1 3
 
 <br>
 
-***reference***
+*reference*
 - https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
+- https://blog.naver.com/jhc9639/222289089015
 
 <br>
 
@@ -101,5 +143,5 @@ sptSet은 최초 비어있는 상태이며 정점들에 할당된 거리 값은 
 
 <br>
 
-***reference***
+*reference*
 - https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
